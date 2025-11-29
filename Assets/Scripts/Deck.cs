@@ -11,7 +11,7 @@ public class Deck : MonoBehaviour
     [SerializeField] Hand hand;
     List<CardObj> cards = new List<CardObj>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Setup()
     {
         for(int i = 0; i < 10; i++)
         {
