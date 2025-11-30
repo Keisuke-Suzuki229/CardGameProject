@@ -1,16 +1,23 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class EnemyObj : MonoBehaviour
+public class EnemyObj : MonoBehaviour, IDropHandler
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    //output log when the card is droped
+    public void OnDrop(PointerEventData eventData)
     {
-        
+        Debug.Log("OnDropEvent");
+        CardObj card = eventData.pointerDrag.GetComponent<CardObj>();
+
+        if(card != null)
+        {
+            BattleSystem owner = FindAnyObjectByType<BattleSystem>();
+            owner.CurrentCardToPlay = card;
+            owner.CurrentTarget = this;
+
+            owner.ChangeState(new BattleCardEffectState(owner));
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

@@ -14,10 +14,18 @@ public class BattleSystem : MonoBehaviour
     BattleCardSelectionState cardSelectionState;
     BattleStateBase currentState;
 
+    [SerializeField] Deck deck;
+    [SerializeField] Hand hand;
+
     public BattlePlayerDrawState PlayerDrawState { get => playerDrawState; }
     public BattleSetupState SetupState { get => setupState; }
 
     public BattleCardSelectionState CardSelectionState { get => cardSelectionState; }
+    public Deck Deck { get => deck; }
+    public Hand Hand { get => hand; }
+
+    public CardObj CurrentCardToPlay { get; set; }
+    public EnemyObj CurrentTarget { get; set; }
 
     void Start()
     {
@@ -33,6 +41,11 @@ public class BattleSystem : MonoBehaviour
     {
         currentState = newState;
         currentState.OnEnter();
+    }
+
+    void Update()
+    {
+        //currentState.OnUpdate();
     }
 
 }
