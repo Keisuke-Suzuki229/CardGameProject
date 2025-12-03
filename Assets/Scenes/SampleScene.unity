@@ -550,8 +550,8 @@ RectTransform:
   - {fileID: 1418927056}
   - {fileID: 1403305787}
   - {fileID: 213106281}
-  - {fileID: 611729608}
   - {fileID: 898934733}
+  - {fileID: 611729608}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 407090472}
   - component: {fileID: 407090471}
   m_Layer: 0
-  m_Name: Square
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,7 +1035,6 @@ GameObject:
   - component: {fileID: 611729611}
   - component: {fileID: 611729610}
   - component: {fileID: 611729609}
-  - component: {fileID: 611729612}
   m_Layer: 5
   m_Name: Hand
   m_TagString: Untagged
@@ -1074,6 +1073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55980506b11ecf948b8cbac19dce7a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discardArea: {fileID: 188552524}
 --- !u!114 &611729610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,32 +1112,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611729607}
   m_CullTransparentMesh: 1
---- !u!114 &611729612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611729607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: -95.67
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,6 +1285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9c449897a10b04f9947794e38e4f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deck: {fileID: 1631349895}
+  hand: {fileID: 611729609}
 --- !u!1 &1054403543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1815,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1418927059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1418927057}
+        m_TargetAssemblyTypeName: TurnEndButton, Assembly-CSharp
+        m_MethodName: OnTurnEndButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1418927059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,6 +1920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardObjPrefab: {fileID: 4326957589398348232, guid: ccc5f5deda0e7a149a9172810206c77c, type: 3}
   hand: {fileID: 611729609}
+  discardArea: {fileID: 188552524}
 --- !u!114 &1631349896
 MonoBehaviour:
   m_ObjectHideFlags: 0

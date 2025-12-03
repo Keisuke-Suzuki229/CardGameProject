@@ -10,10 +10,13 @@ public class CardObj : MonoBehaviour, IDragHandler,IEndDragHandler, IBeginDragHa
     [SerializeField] Text descriptionText;
     [SerializeField] Image icon;
     [SerializeField] Text costText;
+    [SerializeField] int cost = 2;
 
     CanvasGroup canvasGroup;
 
     public UnityAction OnEndDragAction; // variable that can register function which you want to implement at end drag
+
+    public int Cost => cost;
 
     void Awake()
     {

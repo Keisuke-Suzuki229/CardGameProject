@@ -173,6 +173,7 @@ MonoBehaviour:
   descriptionText: {fileID: 7198203129327538500}
   icon: {fileID: 2210553409943492645}
   costText: {fileID: 2883102595465886062}
+  cost: 2
 --- !u!225 &2707097281920584957
 CanvasGroup:
   m_ObjectHideFlags: 0

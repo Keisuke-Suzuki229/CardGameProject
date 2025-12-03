@@ -9,5 +9,15 @@ public class BattleCardSelectionState : BattleStateBase
     public override void OnEnter()
     {
         Debug.Log("Selection OnEnter");
+        
+    }
+
+    public override void OnUpdate()
+    {
+        if(Owner.CurrentCardToPlay != null && Owner.CurrentTarget != null)
+        {
+            Owner.ChangeState(new BattleCardEffectState(Owner));
+        }
+        
     }
 }

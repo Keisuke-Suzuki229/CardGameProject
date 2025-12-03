@@ -7,7 +7,7 @@ public class Hand : MonoBehaviour
 {
 
 
-    
+    [SerializeField] DiscardArea discardArea;
 
     List<CardObj> cards = new List<CardObj>();
 
@@ -20,7 +20,7 @@ public class Hand : MonoBehaviour
         card.OnEndDragAction += ArrangeCards;
     }
 
-    void ArrangeCards()
+    public void ArrangeCards()
     {
 
         int count = cards.Count;
@@ -35,11 +35,24 @@ public class Hand : MonoBehaviour
         }
     }
 
-    public void RemoveCard(CardObj card)
+    public void MoveToDiscard(CardObj card)
     {
-        cards.Remove(card);
-        ArrangeCards();
+        if (!cards.Remove(card)) return;
+
+        discardArea.AddCard(card);
     }
+
+    public void DiscardAll()
+    {
+        CardObj[] copy = cards.ToArray();
+
+        foreach(CardObj card in copy)
+        {
+            MoveToDiscard(card);
+        }
+    }
+
+   
 
 }
 

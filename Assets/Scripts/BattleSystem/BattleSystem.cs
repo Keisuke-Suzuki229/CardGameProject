@@ -16,6 +16,7 @@ public class BattleSystem : MonoBehaviour
 
     [SerializeField] Deck deck;
     [SerializeField] Hand hand;
+    [SerializeField] Mana mana;
 
     public BattlePlayerDrawState PlayerDrawState { get => playerDrawState; }
     public BattleSetupState SetupState { get => setupState; }
@@ -23,6 +24,7 @@ public class BattleSystem : MonoBehaviour
     public BattleCardSelectionState CardSelectionState { get => cardSelectionState; }
     public Deck Deck { get => deck; }
     public Hand Hand { get => hand; }
+    public Mana Mana { get => mana; }
 
     public CardObj CurrentCardToPlay { get; set; }
     public EnemyObj CurrentTarget { get; set; }
@@ -45,7 +47,7 @@ public class BattleSystem : MonoBehaviour
 
     void Update()
     {
-        //currentState.OnUpdate();
+        currentState.OnUpdate();
     }
 
 }

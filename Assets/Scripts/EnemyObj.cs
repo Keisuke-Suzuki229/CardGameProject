@@ -15,7 +15,7 @@ public class EnemyObj : MonoBehaviour, IDropHandler
             owner.CurrentCardToPlay = card;
             owner.CurrentTarget = this;
 
-            owner.ChangeState(new BattleCardEffectState(owner));
+            
         }
     }
 
