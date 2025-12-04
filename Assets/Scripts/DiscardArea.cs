@@ -8,6 +8,10 @@ public class DiscardArea : MonoBehaviour
 
     List<CardObj> discardCards = new List<CardObj>();
 
+    private void Awake()
+    {
+        discardCardCountText.text = discardCards.Count.ToString();
+    }
     public void AddCard(CardObj card)
     {
         discardCards.Add(card);

@@ -3,6 +3,13 @@ using UnityEngine.EventSystems;
 
 public class EnemyObj : MonoBehaviour, IDropHandler
 {
+    [SerializeField] EnemyStatus enemyStatus;
+    
+    void Awake()
+    {
+        if(enemyStatus == null) enemyStatus = GetComponent<EnemyStatus>();
+
+    }
     //output log when the card is droped
     public void OnDrop(PointerEventData eventData)
     {
@@ -13,7 +20,7 @@ public class EnemyObj : MonoBehaviour, IDropHandler
         {
             BattleSystem owner = FindAnyObjectByType<BattleSystem>();
             owner.CurrentCardToPlay = card;
-            owner.CurrentTarget = this;
+            owner.CurrentTarget = enemyStatus;
 
             
         }

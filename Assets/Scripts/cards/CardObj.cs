@@ -1,4 +1,4 @@
-using Mono.Cecil.Cil;
+
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -14,13 +14,23 @@ public class CardObj : MonoBehaviour, IDragHandler,IEndDragHandler, IBeginDragHa
 
     CanvasGroup canvasGroup;
 
+    public CardData data;
+
     public UnityAction OnEndDragAction; // variable that can register function which you want to implement at end drag
 
-    public int Cost => cost;
+    public int Cost => data.cost;
 
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+    }
+    void Start()
+    {
+        nameText.text = data.cardName;
+        descriptionText.text = data.description;
+        icon.sprite = data.icon;
+        costText.text = data.cost.ToString();
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -40,10 +50,12 @@ public class CardObj : MonoBehaviour, IDragHandler,IEndDragHandler, IBeginDragHa
         OnEndDragAction?.Invoke();
     }
 
-    public virtual void PlayCard(EnemyObj target)
+    public void PlayCard(EnemyStatus target)
     {
-        Debug.Log($"{nameText.text} was played");
-        //Take Damage
-        //move to Discard Area
+        CardEffectBase effect = CardEffectFactory.CreateEffect(data);
+        effect.Execute(target);
+
+        Debug.Log($"{data.cardName} Played");
     }
+   
 }

@@ -174,6 +174,7 @@ MonoBehaviour:
   icon: {fileID: 2210553409943492645}
   costText: {fileID: 2883102595465886062}
   cost: 2
+  data: {fileID: 11400000, guid: 705399a876e15924ca182bb9dd63179a, type: 2}
 --- !u!225 &2707097281920584957
 CanvasGroup:
   m_ObjectHideFlags: 0

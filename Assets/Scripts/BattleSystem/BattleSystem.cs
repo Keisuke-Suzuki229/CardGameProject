@@ -17,6 +17,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Deck deck;
     [SerializeField] Hand hand;
     [SerializeField] Mana mana;
+    [SerializeField] HeroObj hero;
+    [SerializeField] EnemyObj enemy;
 
     public BattlePlayerDrawState PlayerDrawState { get => playerDrawState; }
     public BattleSetupState SetupState { get => setupState; }
@@ -27,7 +29,16 @@ public class BattleSystem : MonoBehaviour
     public Mana Mana { get => mana; }
 
     public CardObj CurrentCardToPlay { get; set; }
-    public EnemyObj CurrentTarget { get; set; }
+    public EnemyStatus CurrentTarget { get; set; }
+
+    private PlayerStatus playerStatus;
+    private EnemyStatus enemyStatus;
+
+    private void Awake()
+    {
+        playerStatus = hero.GetComponent<PlayerStatus>();
+        enemyStatus = enemy.GetComponent<EnemyStatus>();
+    }
 
     void Start()
     {
@@ -49,5 +60,19 @@ public class BattleSystem : MonoBehaviour
     {
         currentState.OnUpdate();
     }
+
+    public void DamageEnemy(int amount)
+    {
+        
+        CurrentTarget.TakeDamage(amount);
+
+    }
+
+    public void DamagePlayer(int amount)
+    {
+        playerStatus.TakeDamage(amount);
+    }
+
+
 
 }

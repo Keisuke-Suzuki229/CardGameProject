@@ -12,7 +12,7 @@ public class BattleEnemyPhaseState : BattleStateBase
 
         Owner.Hand.DiscardAll();
 
-        //enemy.DoAction();
+        Owner.DamagePlayer(5);
 
         Owner.Mana.ResetMana();
 

@@ -11,6 +11,7 @@ public class Deck : MonoBehaviour
     [SerializeField] Hand hand;
     [SerializeField] DiscardArea discardArea;
     [SerializeField] Text cardCountText;
+    [SerializeField] CardData[] cardDataPool;
 
     List<CardObj> cards = new List<CardObj>();
     
@@ -21,6 +22,7 @@ public class Deck : MonoBehaviour
 
             CardObj cardObj = Spawn();
             cardObj.gameObject.SetActive(false);
+            
             cards.Add(cardObj);
             UpdateCardCountUI();
 
@@ -31,7 +33,11 @@ public class Deck : MonoBehaviour
 
     CardObj Spawn()
     {
-        return Instantiate(cardObjPrefab, transform);
+        CardObj card = Instantiate(cardObjPrefab, transform);
+
+        int randomIndex = Random.Range(0, cardDataPool.Length);
+        card.data = cardDataPool[randomIndex];
+        return card;
     }
 
     public CardObj Draw()

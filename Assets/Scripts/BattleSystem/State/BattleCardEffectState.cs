@@ -10,7 +10,7 @@ public class BattleCardEffectState : BattleStateBase
     public override void OnEnter()
     {
         CardObj card = Owner.CurrentCardToPlay;
-        EnemyObj target = Owner.CurrentTarget;
+        EnemyStatus target = Owner.CurrentTarget;
 
         if(card != null && target != null)
         {
