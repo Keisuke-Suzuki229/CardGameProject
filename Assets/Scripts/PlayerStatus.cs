@@ -7,6 +7,13 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] Text currentHPUI;
     public int currentHp;
 
+    [Header("Shield UI")]
+    [SerializeField] Image shieldUI;
+    [SerializeField] Text shieldText;
+
+    
+    public int shield;
+
     private void Awake()
     {
         currentHp = MaxHp;
@@ -19,7 +26,16 @@ public class PlayerStatus : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        currentHp -= amount;
+        int reduced = amount;
+        if(shield > 0)
+        {
+            int used = Mathf.Min(shield, reduced);
+            shield -= used;
+            reduced -= used;
+        }
+
+        currentHp -= reduced;
+
         if (currentHp < 0) currentHp = 0;
 
         Debug.Log($"Player took {amount} damage! Current Hp : {currentHp}");
@@ -36,6 +52,12 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
+    public void AddShield(int amount)
+    {
+        shield += amount;
+        UpdateUI();
+    }
+
     public void Heal(int amount)
     {
         currentHp += amount;
@@ -47,6 +69,17 @@ public class PlayerStatus : MonoBehaviour
     {
         if (hpSlider != null) hpSlider.value = currentHp;
         if (currentHPUI != null) currentHPUI.text = currentHp.ToString();
+
+        if(shield > 0)
+        {
+            shieldUI.gameObject.SetActive(true);
+            shieldText.text = shield.ToString();
+
+        }
+        else
+        {
+            shieldUI.gameObject.SetActive(false);
+        }
 
     }
 }

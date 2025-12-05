@@ -26,6 +26,14 @@ public class CardObj : MonoBehaviour, IDragHandler,IEndDragHandler, IBeginDragHa
     }
     void Start()
     {
+        SetupUI();
+
+    }
+
+    public void SetupUI()
+    {
+        if (data == null) return;
+
         nameText.text = data.cardName;
         descriptionText.text = data.description;
         icon.sprite = data.icon;

@@ -8,6 +8,10 @@ public class HealEffect : CardEffectBase
 
     public override void Execute(EnemyStatus target)
     {
-        throw new System.NotImplementedException();
+        PlayerStatus player = Object.FindAnyObjectByType<PlayerStatus>();
+
+        player.Heal(data.value);
+
+        Debug.Log($"{data.cardName} : Heal {data.value}");
     }
 }

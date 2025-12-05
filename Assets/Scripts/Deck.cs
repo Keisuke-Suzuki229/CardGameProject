@@ -37,6 +37,7 @@ public class Deck : MonoBehaviour
 
         int randomIndex = Random.Range(0, cardDataPool.Length);
         card.data = cardDataPool[randomIndex];
+        card.SetupUI();
         return card;
     }
 
