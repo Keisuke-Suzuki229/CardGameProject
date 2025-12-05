@@ -17,6 +17,8 @@ public class Hand : MonoBehaviour
         card.transform.SetParent(transform);
         card.gameObject.SetActive(true);
         ArrangeCards();
+
+
         card.OnEndDragAction += ArrangeCards;
     }
 

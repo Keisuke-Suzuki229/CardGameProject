@@ -8,6 +8,7 @@ public class EnemyStatus : MonoBehaviour
     
 
     public int currentHp;
+    public string name = "ghost";
 
     private void Awake()
     {

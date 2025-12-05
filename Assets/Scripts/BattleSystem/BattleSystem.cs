@@ -73,6 +73,23 @@ public class BattleSystem : MonoBehaviour
         playerStatus.TakeDamage(amount);
     }
 
+    //public void PlayCurrentCard()
+    //{
+    //    if (CurrentCardToPlay == null) return;
+
+    //    CardData data = CurrentCardToPlay.data;
+
+    //    if(data.effectType == CardEffectType.Attack)
+    //    {
+    //        CurrentCardToPlay.PlayCard(CurrentTarget);
+    //    }
+    //    else if(data.effectType == CardEffectType.Block || data.effectType == CardEffectType.Heal || data.effectType == CardEffectType.Draw)
+    //    {
+    //        PlayerStatus player = FindAnyObjectByType<PlayerStatus>();
+    //        CurrentCardToPlay.PlayCard(null);
+    //    }
+    //}
+
 
 
 }
